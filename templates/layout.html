@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{% block title %}rmon{% endblock %}</title>
+
+        <!-- If you are using CSS version, only link these 2 files, you may add app.css to use for your overrides if you like. -->
+        <link rel="stylesheet" href="/static/lib/normalize.css" />
+        <link rel="stylesheet" href="/static/lib/foundation.min.css" />
+        <link rel="stylesheet" href="/static/site.css" />
+
+        <script src="/static/lib/custom.modernizr.js"></script>
+    </head>
+    <body style="font-family: verdana,arial,helvetica,sans-serif;">
+        <div>
+            {% block content %}{% endblock %}
+        </div>
+
+        <script>
+            document.write('<script src=' +
+                    ('__proto__' in {} ? '/static/lib/zepto' : '/static/lib/jquery') +
+                    '.js><\/script>')
+        </script>
+        <script src="/static/lib/foundation.min.js"></script>
+        <script>
+            $(document).foundation();
+        </script>
+    </body>
+</html>

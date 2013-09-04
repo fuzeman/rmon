@@ -1,0 +1,20 @@
+.user-detail {
+    margin-bottom: 20px;
+}
+
+.comment {
+    margin-bottom: 20px;
+}
+
+    .comment-header, .comment-footer {
+        font-size: 10px;
+    }
+
+    .comment .md {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+        .comment .md p {
+            margin: 0;
+        }

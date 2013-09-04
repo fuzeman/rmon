@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% macro print_comments(comment, depth=1) -%}
+    <div class="comment" style="margin-left: {{ depth * 20 }}px">
+        <div class="comment-header">
+            <span>{{ comment.author }}</span>
+        </div>
+        {{ comment.body_html|safe }}
+        <div class="comment-footer">
+            <a style="font-size: 10px;" href="{{ comment.permalink }}" target="_blank">permalink</a>
+        </div>
+    </div>
+    {% for reply in comment.replies %}
+        {{ print_comments(reply, depth + 1) }}
+    {% endfor %}
+{%- endmacro %}
+
+{% block title %}{{ request_detail.username }} - rmon{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="small-12 small-centered large-9 large-centered columns user-detail">
+            <h5>{{ user.name }}</h5>
+            <div><b>{{ user.link_karma }}</b> link karma</div>
+            <div><b>{{ user.comment_karma }}</b> comment karma</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 small-centered large-9 large-centered columns">
+            {% for comment in comments %}
+                <h5>{{ comment.link_title }}</h5>
+                {{ print_comments(comment) }}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
